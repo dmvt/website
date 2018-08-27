@@ -9,7 +9,8 @@ import Chain from '@components/Chain';
 import Dapp from '@components/Dapp';
 import BuildDapp from '@components/BuildDapp';
 import Cta from '@components/Cta';
-import { MarketDescriptionWrapper, MarketDescriptionText } from '@src/Styles';
+import ExplainerCta from '@components/ExplainerCta';
+import { MarketDescriptionText, MarketDescriptionWrapper } from '@src/Styles';
 
 describe('<Home />', () => {
   it('renders content', () => {
@@ -21,6 +22,7 @@ describe('<Home />', () => {
     const component = shallow(<HomeComponent />);
     expect(component.find('div')).to.have.length(1);
     expect(component.find(Hero)).to.have.length(1);
+    expect(component.find(ExplainerCta)).to.have.length(1);
     expect(component.find(Solution)).to.have.length(1);
     expect(component.find(Chain)).to.have.length(1);
     expect(component.find(Dapp)).to.have.length(1);

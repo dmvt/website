@@ -227,7 +227,7 @@ class MarketFooter extends React.Component {
               </FooterLink>
               <FooterLink>
                 <Link
-                  to="/press"
+                  to="https://cms.marketprotocol.io/press"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   Press

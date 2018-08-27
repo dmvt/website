@@ -9,10 +9,12 @@ import Chain from '@components/Chain';
 import Dapp from '@components/Dapp';
 import BuildDapp from '@components/BuildDapp';
 import Cta from '@components/Cta';
+import ExplainerCta from '@components/ExplainerCta';
 
 export const HomeComponent = () => (
   <div>
     <Hero />
+    <ExplainerCta />
     <MarketDescriptionWrapper>
       <MarketDescriptionText>
         <span style={{ color: '#00E2C1', fontWeight: 'bold' }}>

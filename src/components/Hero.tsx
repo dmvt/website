@@ -97,7 +97,7 @@ class Hero extends React.Component<{ text?: string }, {}> {
                 'Powering safe, solvent and trustless trading of any asset.'}
             </HeroText>
             <CtaContainer>
-              <Cta showExplainerAndNewsLetter />
+              <Cta onlyShowSubscribeButton />
             </CtaContainer>
           </Col>
           <Col xs={0} sm={0} md={12} lg={14}>
