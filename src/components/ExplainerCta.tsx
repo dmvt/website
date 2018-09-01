@@ -11,6 +11,10 @@ interface ExplainerCtaState {
   explainerPopUpVisible: boolean;
 }
 
+interface ExplainerCtaProps {
+  enableVideo: boolean;
+}
+
 const Wrapper = styled.section`
   padding: 50px;
   background: #f0f0f0;
@@ -42,10 +46,17 @@ const TextWrapper = styled.div`
   }
 `;
 
-class ExplainerCta extends React.Component<{}, ExplainerCtaState> {
-  state: ExplainerCtaState = {
-    explainerPopUpVisible: false
-  };
+class ExplainerCta extends React.Component<
+  ExplainerCtaProps,
+  ExplainerCtaState
+> {
+  constructor(props: ExplainerCtaProps) {
+    super(props);
+
+    this.state = {
+      explainerPopUpVisible: this.props.enableVideo
+    };
+  }
 
   handleCancel = () => {
     this.setState({

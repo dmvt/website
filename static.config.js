@@ -36,6 +36,10 @@ export default {
         component: 'src/containers/Home',
       },
       {
+        path: '/video',
+        component: 'src/containers/Video',
+      },
+      {
         path: '/team',
         component: 'src/containers/Team',
       },
