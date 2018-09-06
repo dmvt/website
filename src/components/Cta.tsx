@@ -13,6 +13,7 @@ interface Props {
   afterIcon?: boolean;
   onlyShowSubscribeButton?: boolean;
   showExplainerAndNewsLetter?: boolean;
+  subscriptionPopUpVisible?: boolean;
 }
 
 interface CtaState {
@@ -52,7 +53,7 @@ class Cta extends React.Component<Props, CtaState> {
 
     this.state = {
       explainerPopUpVisible: false,
-      subscriptionPopUpVisible: false
+      subscriptionPopUpVisible: !!this.props.subscriptionPopUpVisible
     };
   }
 

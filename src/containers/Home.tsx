@@ -1,6 +1,5 @@
 import React from 'react';
 import { withSiteData } from 'react-static';
-
 import { MarketDescriptionText, MarketDescriptionWrapper } from '@src/Styles';
 
 import Hero from '@components/Hero';
@@ -11,10 +10,18 @@ import BuildDapp from '@components/BuildDapp';
 import Cta from '@components/Cta';
 import ExplainerCta from '@components/ExplainerCta';
 
-export const HomeComponent = () => (
+interface HomeComponentProps {
+  subscriptionPopUpVisible?: boolean;
+  enableVideo?: boolean;
+}
+
+export const HomeComponent = ({
+  subscriptionPopUpVisible,
+  enableVideo
+}: HomeComponentProps) => (
   <div>
     <Hero />
-    <ExplainerCta />
+    <ExplainerCta enableVideo={enableVideo} />
     <MarketDescriptionWrapper>
       <MarketDescriptionText>
         <span style={{ color: '#00E2C1', fontWeight: 'bold' }}>
@@ -31,7 +38,7 @@ export const HomeComponent = () => (
     <Chain />
     <Dapp />
     <BuildDapp />
-    <Cta bg="#f0f0f0" />
+    <Cta subscriptionPopUpVisible={subscriptionPopUpVisible} bg="#f0f0f0" />
   </div>
 );
 

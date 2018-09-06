@@ -36,6 +36,10 @@ export default {
         component: 'src/containers/Home',
       },
       {
+        path: '/video',
+        component: 'src/containers/Video',
+      },
+      {
         path: '/team',
         component: 'src/containers/Team',
       },
@@ -53,11 +57,15 @@ export default {
       },
       {
         path: '/jobs',
-        component: 'src/containers/Jobs'
+        component: 'src/containers/Jobs',
       },
       {
         path: '/token-interest',
-        component: 'src/containers/TokenInterest'
+        component: 'src/containers/TokenInterest',
+      },
+      {
+        path: '/subscribe',
+        component: 'src/containers/Subscribe',
       },
       {
         is404: true,
