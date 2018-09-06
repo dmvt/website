@@ -17,3 +17,7 @@ it('click <click to subscribe> button show the modal, then click x button dismis
   expect(wrapper.find(MarketSubscriberForm).props().visible).toEqual(false);
 });
 
+it('opens subscribe form with subscriptionPopUpVisible prop', () => {
+  const component = mount(<Cta subscriptionPopUpVisible />);
+  expect(component.find(MarketSubscriberForm).props().visible).toEqual(true);
+});

@@ -10,7 +10,15 @@ import BuildDapp from '@components/BuildDapp';
 import Cta from '@components/Cta';
 import ExplainerCta from '@components/ExplainerCta';
 
-export const HomeComponent = ({ enableVideo }) => (
+interface HomeComponentProps {
+  subscriptionPopUpVisible?: boolean;
+  enableVideo?: boolean;
+}
+
+export const HomeComponent = ({
+  subscriptionPopUpVisible,
+  enableVideo
+}: HomeComponentProps) => (
   <div>
     <Hero />
     <ExplainerCta enableVideo={enableVideo} />
@@ -30,7 +38,7 @@ export const HomeComponent = ({ enableVideo }) => (
     <Chain />
     <Dapp />
     <BuildDapp />
-    <Cta bg="#f0f0f0" />
+    <Cta subscriptionPopUpVisible={subscriptionPopUpVisible} bg="#f0f0f0" />
   </div>
 );
 

@@ -41,6 +41,11 @@ describe('<Home />', () => {
     expect(spanComponent.render().text()).to.equal('MARKET Protocol');
   });
 
+  it('renders the subscribe form with subscriptionPopUpVisible prop', () => {
+    const component = shallow(<HomeComponent subscriptionPopUpVisible />);
+    expect(component.find(Cta).props().subscriptionPopUpVisible).toEqual(true);
+  });
+
   it('renders all site components with route wrapper', () => {
     const component = mount(<HomeRouteWrapper />);
     expect(component.getElement()).not.to.be.null;
