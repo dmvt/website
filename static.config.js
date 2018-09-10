@@ -52,10 +52,6 @@ export default {
         component: 'src/containers/Partners',
       },
       {
-        path: '/whitepaper',
-        component: 'src/containers/WhitePaper',
-      },
-      {
         path: '/jobs',
         component: 'src/containers/Jobs',
       },
