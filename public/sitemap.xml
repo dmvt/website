@@ -2,38 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://marketprotocol.io/</loc>
-    <lastmod>2018-06-19</lastmod>
+    <lastmod>2018-09-12</lastmod>
   </url>
   <url>
     <loc>https://marketprotocol.io/assets/MARKET_Protocol-Whitepaper.pdf</loc>
-    <lastmod>2018-06-19</lastmod>
+    <lastmod>2018-09-12</lastmod>
   </url>
   <url>
     <loc>https://marketprotocol.io/about/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>https://marketprotocol.io/team/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>https://marketprotocol.io/partners/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>https://marketprotocol.io/press/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>https://marketprotocol.io/jobs/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>https://marketprotocol.io/whitepaper/</loc>
-    <lastmod>2018-06-19</lastmod>
+    <lastmod>2018-09-12</lastmod>
   </url>
   <url>
     <loc>https://marketprotocol.io/assets/MARKET_Protocol-Summary.pdf</loc>
-    <lastmod>2018-06-19</lastmod>
+    <lastmod>2018-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://marketprotocol.io/team/</loc>
+    <lastmod>2018-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://marketprotocol.io/partners/</loc>
+    <lastmod>2018-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://marketprotocol.io/token-interest/</loc>
+    <lastmod>2018-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://marketprotocol.io/jobs/</loc>
+    <lastmod>2018-09-12</lastmod>
   </url>
 </urlset>
