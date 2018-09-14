@@ -26,8 +26,8 @@ const Wrapper = styled.section`
 
 const IconStyled = styled(Icon)`
   position: absolute;
-  color: #00e2c1;
-  font-size: 25px;
+  color: rgba(240, 240, 240, 0.7);
+  font-size: 45px;
   top: calc(50% - 10px);
   left: calc(50% - 20px);
 `;
@@ -37,6 +37,14 @@ const ExplainerVideoContainer = styled.div`
 
   :hover {
     opacity: 0.8;
+  }
+
+  img {
+    width: 550px;
+
+    @media ${device.mobileS} and (max-width: ${size.tablet}) {
+      width: 100%;
+    }
   }
 `;
 
@@ -84,15 +92,11 @@ class ExplainerCta extends React.Component<
     return (
       <Wrapper>
         <Row type="flex" justify="center" align="middle">
-          <Col xs={24} md={6} xl={3}>
+          <Col xs={24} style={{ textAlign: 'center' }}>
             <ExplainerVideoContainer
               onClick={() => this.setState({ explainerPopUpVisible: true })}
             >
-              <img
-                alt="MARKET Protocol "
-                src={explainerThumbnail}
-                style={{ width: '100%', paddingRight: '25px' }}
-              />
+              <img alt="MARKET Protocol " src={explainerThumbnail} />
               <IconStyled type="play-circle" />
             </ExplainerVideoContainer>
             <Modal
@@ -122,15 +126,15 @@ class ExplainerCta extends React.Component<
               />
             </Modal>
           </Col>
-          <Col xs={24} md={10} xl={6}>
-            <TextWrapper>
-              <h2>What is MARKET Protocol?</h2>
-              <p>
-                Check out our quick video to learn more about MARKET Protocol
-                and its uses.
-              </p>
-            </TextWrapper>
-          </Col>
+          {/*<Col xs={24}>*/}
+          {/*<TextWrapper>*/}
+          {/*<h2>What is MARKET Protocol?</h2>*/}
+          {/*<p>*/}
+          {/*Check out our quick video to learn more about MARKET Protocol*/}
+          {/*and its uses.*/}
+          {/*</p>*/}
+          {/*</TextWrapper>*/}
+          {/*</Col>*/}
         </Row>
       </Wrapper>
     );
