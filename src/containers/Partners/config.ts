@@ -51,6 +51,11 @@ const config: Config = {
       image: partnerProjectImages.Bluzelle,
       name: 'Bluzelle',
       url: 'https://bluzelle.com/'
+    },
+    {
+      image: partnerProjectImages.Chainlink,
+      name: 'Chainlink',
+      url: 'https://www.smartcontract.com/'
     }
   ]
 };
