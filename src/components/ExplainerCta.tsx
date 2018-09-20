@@ -28,7 +28,7 @@ const IconStyled = styled(Icon)`
   position: absolute;
   color: rgba(240, 240, 240, 0.7);
   font-size: 45px;
-  top: calc(50% - 10px);
+  top: calc(50% - 20px);
   left: calc(50% - 20px);
 `;
 
@@ -41,16 +41,12 @@ const ExplainerVideoContainer = styled.div`
 
   img {
     width: 550px;
+  }
 
-    @media ${device.mobileS} and (max-width: ${size.tablet}) {
+  @media ${device.mobileS} and (max-width: ${size.tablet}) {
+    img {
       width: 100%;
     }
-  }
-`;
-
-const TextWrapper = styled.div`
-  @media ${device.mobileS} and (max-width: ${size.tablet}) {
-    margin-top: 25px;
   }
 `;
 
@@ -126,15 +122,6 @@ class ExplainerCta extends React.Component<
               />
             </Modal>
           </Col>
-          {/*<Col xs={24}>*/}
-          {/*<TextWrapper>*/}
-          {/*<h2>What is MARKET Protocol?</h2>*/}
-          {/*<p>*/}
-          {/*Check out our quick video to learn more about MARKET Protocol*/}
-          {/*and its uses.*/}
-          {/*</p>*/}
-          {/*</TextWrapper>*/}
-          {/*</Col>*/}
         </Row>
       </Wrapper>
     );
