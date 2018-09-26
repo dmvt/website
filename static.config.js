@@ -64,6 +64,14 @@ export default {
         component: 'src/containers/Subscribe',
       },
       {
+        path: '/thanks',
+        component: 'src/containers/Thanks',
+      },
+      {
+        path: '/token-thanks',
+        component: 'src/containers/TokenThanks',
+      },
+      {
         is404: true,
         component: 'src/containers/404',
       },

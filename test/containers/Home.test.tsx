@@ -2,7 +2,6 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import Home, { HomeComponent } from '@containers/Home';
 import HomeRouteWrapper from '@containers/Video';
-import { MemoryRouter } from 'react-router';
 import { Modal } from 'antd';
 
 import Hero from '@components/Hero';
