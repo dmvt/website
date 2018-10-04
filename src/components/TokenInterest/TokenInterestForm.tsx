@@ -5,6 +5,8 @@ import { FormComponentProps } from 'antd/lib/form';
 import { Button, Checkbox, Form, Input, Radio, Select } from 'antd';
 import countries from './countries';
 import { device, size } from '@src/breakpoints';
+import fetch from 'isomorphic-fetch';
+import env from '../../constants/environment';
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -88,11 +90,24 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
           >
             <h1 style={{ fontSize: '2rem' }}>Interested in Contributing?</h1>
             <Form
-              action={`https://marketprotocol.us17.list-manage.com/subscribe/post`}
               onSubmit={e => {
-                form.validateFields((errors, _) => {
-                  if (errors) {
-                    e.preventDefault();
+                e.preventDefault();
+
+                form.validateFields((errors, values) => {
+                  values.listId = 5326073;
+                  values.allocation = parseInt(values.allocation, 10);
+                  values.allocationCurrency = this.state.currency;
+                  values.citizenship = this.state.citizen;
+                  values.legal = `${values.legal}`;
+                  if (!errors) {
+                    fetch(env.MAIL_LISTER_API, {
+                      method: 'post',
+                      body: JSON.stringify(values)
+                    }).then(function(response) {
+                      if (response.status === 200) {
+                        window.location = '/';
+                      }
+                    });
                   }
                 });
               }}
@@ -100,17 +115,15 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
               method="post"
               autoComplete={'off'}
             >
-              <input type="hidden" name="u" value="ef1f265a21b4aae9002084ee3" />
-              <input type="hidden" name="id" value="9b6a6fd0ec" />
-              <input type="hidden" name="CITIZEN" value={this.state.citizen} />
+              <input type="hidden" name="citizen" value={this.state.citizen} />
               <input
                 type="hidden"
-                name="ALLOCCUR"
+                name="allocationCurrency"
                 value={this.state.currency}
               />
 
               <FormItem label="Full Name">
-                {getFieldDecorator('FNAME', {
+                {getFieldDecorator('fullName', {
                   rules: [
                     {
                       message: 'Please input your full name!',
@@ -120,7 +133,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                   ]
                 })(
                   <Input
-                    name="FNAME"
+                    name="fullName"
                     type="text"
                     placeholder="Full name"
                     style={{
@@ -131,7 +144,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem label="Email Address">
-                {getFieldDecorator('EMAIL', {
+                {getFieldDecorator('email', {
                   rules: [
                     {
                       message: 'Please input an Email Address!',
@@ -144,7 +157,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                   ]
                 })(
                   <Input
-                    name="EMAIL"
+                    name="email"
                     placeholder="Your email address"
                     style={{
                       backgroundColor: '#f6f6f6'
@@ -153,18 +166,18 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem label="Are you an accredited investor?">
-                {getFieldDecorator('ACCRED', {
+                {getFieldDecorator('accreditedInvestor', {
                   initialValue: 'Yes'
                 })(
-                  <RadioGroup name="ACCRED">
+                  <RadioGroup name="accreditedInvestor">
                     <Radio value="Yes">Yes</Radio>
                     <Radio value="No">No</Radio>
                   </RadioGroup>
                 )}
               </FormItem>
               <FormItem label="What type of entity do you represent?">
-                {getFieldDecorator('ENTITY', { initialValue: 'individual' })(
-                  <RadioGroup name="ENTITY">
+                {getFieldDecorator('entity', { initialValue: 'individual' })(
+                  <RadioGroup name="entity">
                     <Radio value="Individual">Individual</Radio>
                     <Radio value="Syndicate">Syndicate</Radio>
                     <Radio value="Professional Fund">Professional Fund</Radio>
@@ -172,7 +185,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem label="Desired Purchase Amount">
-                {getFieldDecorator('DESIREDALL', {
+                {getFieldDecorator('allocation', {
                   rules: [
                     {
                       message: 'Desired purchase amount is required',
@@ -188,7 +201,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                   ]
                 })(
                   <Input
-                    name="DESIREDALL"
+                    name="allocation"
                     placeholder="25000"
                     addonAfter={this.postfixSelector}
                     style={{
@@ -200,7 +213,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem label="Citizenship">
-                {getFieldDecorator('CITIZEN', {
+                {getFieldDecorator('citizenship', {
                   rules: [
                     {
                       message: 'Citizenship is required',
@@ -232,9 +245,9 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem label="ETH or BTC address you plan to send from (optional)">
-                {getFieldDecorator('ETHADDRESS')(
+                {getFieldDecorator('cryptoAddress')(
                   <Input
-                    name="ETHADDRESS"
+                    name="cryptoAddress"
                     placeholder="0x..."
                     type="text"
                     style={{
@@ -245,9 +258,9 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem label="Anything else we should know? (optional)">
-                {getFieldDecorator('ANYTHING')(
+                {getFieldDecorator('notes')(
                   <TextArea
-                    name="ANYTHING"
+                    name="notes"
                     rows={4}
                     style={{
                       backgroundColor: '#f6f6f6',
@@ -257,7 +270,7 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                 )}
               </FormItem>
               <FormItem>
-                {getFieldDecorator('CONFIRM', {
+                {getFieldDecorator('legal', {
                   rules: [
                     {
                       message: 'Please check this option to continue',

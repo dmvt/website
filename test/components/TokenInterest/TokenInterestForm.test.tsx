@@ -23,16 +23,6 @@ describe('<TokenInterestForm />', () => {
     });
 
     describe('token interest form', () => {
-      it('renders a Form with the correct action url', () => {
-        expect(component.find(Form).length).toBe(1);
-        expect(
-          component
-            .find(Form)
-            .at(0)
-            .props().action
-        ).toEqual(`https://marketprotocol.us17.list-manage.com/subscribe/post`);
-      });
-
       it('renders 4 Input types', () => {
         expect(component.find(Form).find(Input).length).toBe(4);
         expect(

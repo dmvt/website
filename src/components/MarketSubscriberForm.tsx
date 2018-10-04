@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Form, Input, Modal } from 'antd';
 import styled from 'styled-components';
+import fetch from 'isomorphic-fetch';
+import env from '../constants/environment';
 
 const FormItem = Form.Item;
 
@@ -34,11 +36,20 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
     onCancel={onCancel}
   >
     <Form
-      action="https://marketprotocol.us17.list-manage.com/subscribe/post"
       onSubmit={e => {
-        form.validateFields((errors, _) => {
-          if (errors) {
-            e.preventDefault();
+        e.preventDefault();
+
+        form.validateFields((errors, values) => {
+          values.listId = 5326022;
+          if (!errors) {
+            fetch(env.MAIL_LISTER_API, {
+              method: 'post',
+              body: JSON.stringify(values)
+            }).then(function(response) {
+              if (response.status === 200) {
+                window.location = '/';
+              }
+            });
           }
         });
       }}
@@ -46,8 +57,6 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
       acceptCharset="utf-8"
       method="post"
     >
-      <input type="hidden" name="u" value="ef1f265a21b4aae9002084ee3" />
-      <input type="hidden" name="id" value="491f750dec" />{' '}
       <h2 style={{ textAlign: 'center', margin: '1rem 0  2rem 0' }}>
         Join Our Newsletter
       </h2>
@@ -62,7 +71,7 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           ]
         })(
           <Input
-            name="MERGE1"
+            name="firstName"
             type="text"
             placeholder="First name"
             style={{
@@ -83,7 +92,7 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           ]
         })(
           <Input
-            name="MERGE2"
+            name="lastName"
             type="text"
             placeholder="Last name"
             style={{
@@ -106,7 +115,7 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           ]
         })(
           <Input
-            name="MERGE0"
+            name="email"
             placeholder="Your email"
             style={{
               backgroundColor: '#f6f6f6'

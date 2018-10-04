@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
+    "@types/isomorphic-fetch": "0.0.34",
     "antd": "3.3.0",
+    "es6-promise": "^4.2.5",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

@@ -21,27 +21,12 @@ describe('<MarketSubscriberForm />', () => {
     const formComponent = component.find(Form);
     const formComponentProps = formComponent.props();
     expect(formComponent).to.have.length(1);
-    expect(formComponentProps.action).to.equal(
-      'https://marketprotocol.us17.list-manage.com/subscribe/post'
-    );
     expect(formComponentProps.method).to.equal('post');
-  });
-
-  it('renders two hidden input elements', () => {
-    const component = mount(<MarketSubscriberForm visible />);
-    const hiddenInputs = component.find('input[type="hidden"]');
-    expect(hiddenInputs).to.have.length(2);
-    expect(hiddenInputs.at(0).props().value).to.equal(
-      'ef1f265a21b4aae9002084ee3'
-    );
-    expect(hiddenInputs.at(0).props().name).to.equal('u');
-    expect(hiddenInputs.at(1).props().value).to.equal('491f750dec');
-    expect(hiddenInputs.at(1).props().name).to.equal('id');
   });
 
   it('adds validation for first name', () => {
     const component = mount(<MarketSubscriberForm visible />);
-    const firstNameInput = component.find('input[name="MERGE1"]');
+    const firstNameInput = component.find('input[name="firstName"]');
     firstNameInput.simulate('change', { target: { value: '  ' }});
     expect(
       component
@@ -53,7 +38,7 @@ describe('<MarketSubscriberForm />', () => {
 
   it('adds validation for last name', () => {
     const component = mount(<MarketSubscriberForm visible />);
-    const lastNameInput = component.find('input[name="MERGE2"]');
+    const lastNameInput = component.find('input[name="lastName"]');
     lastNameInput.simulate('change', { target: { value: '  ' } });
     expect(
       component
@@ -65,7 +50,7 @@ describe('<MarketSubscriberForm />', () => {
 
   it('adds validation for email field', () => {
     const component = mount(<MarketSubscriberForm visible />);
-    const emailInput = component.find('input[name="MERGE0"]');
+    const emailInput = component.find('input[name="email"]');
     emailInput.simulate('change', { target: { value: 'hello' } });
     expect(
       component
@@ -96,15 +81,14 @@ describe('<MarketSubscriberForm />', () => {
     const preventDefaultMock = jest.fn();
     const component = mount(<MarketSubscriberForm visible />);
     const formComponent = component.find(Form);
-    const emailInput = component.find('input[name="MERGE0"]');
-    const firstNameInput = component.find('input[name="MERGE1"]');
-    const lastNameInput = component.find('input[name="MERGE2"]');
+    const emailInput = component.find('input[name="email"]');
+    const firstNameInput = component.find('input[name="firstName"]');
+    const lastNameInput = component.find('input[name="lastName"]');
     expect(component.find('.ant-form-explain')).to.have.length(0);
     emailInput.simulate('change', { target: { value: 'trial@gmail.com' } });
     firstNameInput.simulate('change', { target: { value: 'firstname' } });
     lastNameInput.simulate('change', { target: { value: 'lastname' } });
     formComponent.simulate('submit', { preventDefault: preventDefaultMock });
     expect(component.find('.ant-form-explain')).to.have.length(0);
-    expect(preventDefaultMock.mock.calls.length).to.equal(0);
   });
 });

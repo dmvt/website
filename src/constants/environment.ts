@@ -3,6 +3,7 @@ const EnvironmentConstant = {
     PRODUCTION: 'production',
     TEST: 'test'
   },
+  MAIL_LISTER_API: process.env.MAIL_LISTER_API || 'http://localhost:3210',
   PROD: {
     GOOGLE_TAG_MANAGER: 'GTM-TN3ZVBH',
     URL: 'marketprotocol.io'
