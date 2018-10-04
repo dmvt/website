@@ -43,9 +43,9 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
           values.listId = 5326022;
           if (!errors) {
             fetch(env.MAIL_LISTER_API, {
-              method: 'post',
-              body: JSON.stringify(values)
-            }).then(function(response) {
+              body: JSON.stringify(values),
+              method: 'post'
+            }).then((response) => {
               if (response.status === 200) {
                 window.location = '/';
               }
