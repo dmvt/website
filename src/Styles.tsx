@@ -24,6 +24,13 @@ injectGlobal`
   }
 }
 
+.ant-message-error {
+  color: white;
+}
+.ant-message-success {
+  color: white;
+}
+
 .ant-select-dropdown-menu-item:hover {
   background-color: #e6f7ff !important;
 }

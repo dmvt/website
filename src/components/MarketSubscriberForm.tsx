@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input, Modal } from 'antd';
+import { Button, Form, Input, message, Modal } from 'antd';
 import styled from 'styled-components';
 import fetch from 'isomorphic-fetch';
 import env from '../constants/environment';
@@ -39,6 +39,11 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
       onSubmit={e => {
         e.preventDefault();
 
+        const errorHandler = (err) => {
+          message.error('We\'re sorry but something has gone wrong.');
+          console.error(err);
+        };
+
         form.validateFields((errors, values) => {
           values.listId = 5326022;
           if (!errors) {
@@ -47,9 +52,13 @@ export const SubscriptionPopUp = ({ form, onCancel, visible }) => (
               method: 'post'
             }).then((response) => {
               if (response.status === 200) {
-                window.location = '/';
+                message.success('You are now subscribed!');
+                form.resetFields();
+                onCancel();
+              } else {
+                errorHandler(response);
               }
-            });
+            }).catch(errorHandler);
           }
         });
       }}

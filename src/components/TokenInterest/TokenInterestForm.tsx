@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'antd';
+import { Col, message, Row } from 'antd';
 import styled from 'styled-components';
 import { FormComponentProps } from 'antd/lib/form';
 import { Button, Checkbox, Form, Input, Radio, Select } from 'antd';
@@ -93,6 +93,11 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
               onSubmit={e => {
                 e.preventDefault();
 
+                const errorHandler = (err) => {
+                  message.error('We\'re sorry but something has gone wrong.');
+                  console.error(err);
+                };
+
                 form.validateFields((errors, values) => {
                   values.listId = 5326073;
                   values.allocation = parseInt(values.allocation, 10);
@@ -105,9 +110,14 @@ class TokenInterestForm extends React.Component<FormComponentProps, State> {
                       method: 'post'
                     }).then((response) => {
                       if (response.status === 200) {
-                        window.location = '/';
+                        message.success(
+                          'Thank you for expressing your interest in the token sale. We will be in touch.'
+                        );
+                        form.resetFields();
+                      } else {
+                        errorHandler(response);
                       }
-                    });
+                    }).catch(errorHandler);
                   }
                 });
               }}
